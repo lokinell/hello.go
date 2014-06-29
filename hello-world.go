@@ -2,21 +2,23 @@ package main
 
 import (
 	"fmt"
+	"github.com/lokinell/newmath"
 )
 
 func main() {
-	var a string = "initial"
-	fmt.Println(a)
+	fmt.Println("hello, world. Sqrt(2) = %v", newmath.Sqrt(2))
+	fmt.Println(newmath.GetOwner())
 
-	var b, c int = 1, 2
-	fmt.Println(b, c)
+	defer myDefer()
 
-	var d = true
-	fmt.Println(d)
+	newmath.SetOwner("sholloy")
+	for i := 0; i < 5; i++ {
+		defer fmt.Printf("%d ", i)
+	}
 
-	var e int
-	fmt.Println(e)
+	fmt.Println(newmath.GetOwner())
+}
 
-	f := "short"
-	fmt.Println(f)
+func myDefer() {
+	fmt.Println("run from my defer...")
 }
